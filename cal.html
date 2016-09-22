@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<FORM id="ca" NAME="Calc">
+<div id="container1"></div>
+<TABLE id="movingca" BORDER=4>
+<TR>
+<TD>
+<INPUT id="clear" class="b" TYPE="button" NAME="C"   VALUE="  Clear  " OnClick="Calc.Input.value = ' ', myMove('ca')">
+<INPUT id="name" TYPE="text"   NAME="Input" Size="17">
+<INPUT id="equal" class="b" TYPE="button" NAME="DoIt"  VALUE="  =  " OnClick="Calc.Input.value = eval(Calc.Input.value)">
+</TD>
+
+</TR>
+<TR>
+<TD>
+<INPUT class="mo" id="b1" TYPE="button" NAME="one"   VALUE="  1  " OnClick="Calc.Input.value += '1'"> 
+<INPUT class="mo" id="b2" TYPE="button" NAME="two"   VALUE="  2  " OnCLick="Calc.Input.value += '2'">
+<INPUT class="mo" id="b3" TYPE="button" NAME="three"   VALUE="  3  " OnCLick="Calc.Input.value += '3'">
+<INPUT class="b" TYPE="button" NAME="plus"  VALUE="  +  " OnClick="Calc.Input.value += ' + '"><br>
+<INPUT class="mo" id="b4" TYPE="button" NAME="four"   VALUE="  4  " OnClick="Calc.Input.value += '4'"> 
+<INPUT class="mo" id="b5" TYPE="button" NAME="five"   VALUE="  5  " OnCLick="Calc.Input.value += '5'">
+<INPUT class="mo" id="b6" TYPE="button" NAME="six"   VALUE="  6  " OnCLick="Calc.Input.value += '6'">
+<INPUT class="b" TYPE="button" NAME="sub"  VALUE="  -  " OnClick="Calc.Input.value += ' - '"><br>
+<INPUT class="mo" id="b7" TYPE="button" NAME="seven"   VALUE="  7  " OnClick="Calc.Input.value += '7'"> 
+<INPUT class="mo" id="b8" TYPE="button" NAME="eight"   VALUE="  8  " OnCLick="Calc.Input.value += '8'">
+<INPUT class="mo" id="b9" TYPE="button" NAME="nine"   VALUE="  9  " OnCLick="Calc.Input.value += '9'">
+<INPUT class="b" TYPE="button" NAME="div"  VALUE="  /  " OnClick="Calc.Input.value += ' / '">
+<br>
+<input type="button" value="  AVG  " id="avg" onclick="return average(Calc.Input.value)">
+<INPUT class="mo" id="b0" TYPE="button" NAME="zero"   VALUE="  0  " OnCLick="Calc.Input.value += '0'">
+<INPUT class="b" TYPE="button" NAME="mul"  VALUE="  *  " OnClick="Calc.Input.value += ' * '">
+</TD>
+</TR>
+</TABLE>
+<div id="container2"></div>
+</FORM>
+<script type="text/javascript">
+	function myMove(num) {
+    var elem = document.getElementById("movingca"); 
+    var pos = 0;
+    var idt = setInterval(frame, 10);
+    function frame() {
+        if (pos == 400) {
+            clearInterval(idt);
+        } 
+        if(pos<=100){
+
+            pos++; 
+            document.getElementById("movingca").style.height = "200 + pos";
+            elem.style.top = pos + 'px'; 
+            elem.style.left = pos + 'px'; 
+            elem.style.background = 'blue'; 
+        }
+        if(pos>100&&pos<=200){
+
+            pos++; 
+            document.getElementById("movingca").style.height = "200 + pos";
+            elem.style.top = pos + 'px'; 
+            elem.style.left = pos + 'px'; 
+           elem.style.background = 'red';
+           document.getElementById('ca').style.background = 'rgb(215, 21, 14)';
+           document.getElementById('container1').style.background = 'rgb(249, 97, 239)';
+           document.getElementById('container2').style.background = 'rgb(14, 215, 201)';
+        }
+        if(pos>200&&pos<=300){
+
+            pos++; 
+            document.getElementById("movingca").style.height = "200 + pos";
+            elem.style.top = pos + 'px'; 
+            elem.style.left = pos + 'px'; 
+           elem.style.background = 'green';
+           document.getElementById('ca').style.background = 'rgb(14, 215, 201)';
+           document.getElementById('container1').style.background = 'rgb(215, 21, 14)';
+           document.getElementById('container2').style.background = 'rgb(249, 97, 239)';
+        }
+         if(pos>300&&pos<=400){
+
+            pos++; 
+            document.getElementById("movingca").style.height = "200 + pos";
+            elem.style.top = pos + 'px'; 
+            elem.style.left = pos + 'px'; 
+           elem.style.background = 'silver';
+           document.getElementById('ca').style.background = 'rgb(249, 97, 239)';
+           document.getElementById('container1').style.background = 'rgb(14, 215, 201)';
+           document.getElementById('container2').style.background = 'rgb(215, 21, 14)';
+        }
+    }
+}
+
+function average(num)
+{
+	var Ag  = 0, totalag = 0;
+	var count =0;
+	var exp = /^[0-9]+$/;
+	for (var i = 0;i<num.length - 1; i++) {
+	if(num[i].match(exp))
+	{
+		Ag+=parseFloat(num[i]);
+		count++;
+	}
+	}
+totalag = Ag/count;
+ document.getElementById('name').value = totalag;
+	
+}
+</script>
+<style type="text/css">
+table{
+	background: black;
+	border-color: rgba(69, 238, 238, .7);
+	height: 200px;
+	width: 200px;
+	
+}
+#container1{
+	height: 450px;
+	width: 344px;
+	display: inline-block;
+	position: absolute;
+	background: black;
+}
+#container2{
+	height: 450px;
+	width: 344px;
+	display: inline-block;
+	float: right;
+	background: black;
+	margin-top: -45.2%;
+}
+#name{
+	height: 30px;
+	background: rgba(69, 238, 238, .5);
+	display: inline-block;
+}
+body{
+	background-image: url("logo.png");
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
+}
+#ca{
+	height: 710px;
+	width: 690px;
+	border: 5px solid white;
+	border-color: green;
+	margin-left: 25%;
+	margin-top: 5%;
+	position: absolute;
+	background: black;
+}
+#clear{
+	height: 70px;
+	width: 60px;
+	margin-left: 2%;
+	margin-right: 1%;
+}
+#movingca{
+	position: relative;
+	width: 290px;
+	height: 300px;
+	align:center;
+}
+#equal{
+	height: 70px;
+	width: 60px;
+}
+#b1{
+background: rgba(111, 8, 89, 1);
+border: 0;
+width: 50px;
+height: 50px;
+margin-bottom: 2%;
+color: white;
+margin-right: 1%;
+margin-left: 4%;
+display: inline-block;
+}
+#b2{
+background: rgba(9, 218, 238, 1);
+border: 0;
+width: 50px;
+height: 50px;
+margin-bottom: 2%;
+color: white;
+margin-right: 1%;
+margin-left: 2%;
+display: inline-block;
+}
+#b3{
+background: rgba(111, 8, 89, 1);
+border: 0;
+width: 50px;
+height: 50px;
+margin-bottom: 2%;
+color: white;
+margin-right: 1%;
+display: inline-block;
+margin-left: 2%;
+}
+#b4{
+background: rgba(9, 218, 238, 1);
+border: 0;
+width: 50px;
+height: 50px;
+margin-bottom: 2%;
+color: white;
+margin-right: 1%;
+display: inline-block;
+margin-left: 4%;
+}
+#b5{
+background: rgba(69, 80, 10, 1);
+border: 0;
+width: 50px;
+height: 50px;
+color: white;
+margin-right: 1%;
+margin-left: 2%;
+margin-bottom: 2%;
+display: inline-block;
+}
+#b6{
+background: rgba(9, 218, 238, 1);
+border: 0;
+width: 50px;
+height: 50px;
+margin-bottom: 2%;
+color: white;
+margin-right: 1%;
+display: inline-block;
+margin-left: 2%;
+}
+#b7{
+background: rgba(111, 8, 89, 1);
+border: 0;
+width: 50px;
+height: 50px;
+margin-bottom: 2%;
+color: white;
+margin-right: 1%;
+display: inline-block;
+margin-left: 4%;
+}
+#b8{
+background: rgba(9, 218, 238, 1);
+border: 0;
+width: 50px;
+height: 50px;
+color: white;
+margin-right: 1%;
+margin-left: 2%;
+margin-bottom: 2%;
+display: inline-block;
+}
+#b9{
+background: rgba(111, 8, 89, 1);
+border: 0;
+width: 50px;
+height: 50px;
+margin-bottom: 2%;
+color: white;
+margin-right: 1%;
+margin-left: 2%;
+display: inline-block;
+display: inline-block;
+}
+#b0{
+background: rgba(69, 80, 10, 1);
+border: 0;
+width: 50px;
+height: 50px;
+margin-bottom: 2%;
+color: white;
+display: inline-block;
+margin-left: 3%;
+margin-right: 1%;
+
+}
+#avg{
+margin-left: 26.5%;
+border: 0;
+width: 50px;
+height: 50px;
+color: white;
+background: navy;
+}
+.b{
+background: red;
+border: 0;
+width: 50px;
+height: 50px;
+
+}
+
+
+
+</style>
+
+
+
+
+</body>
+</html>
